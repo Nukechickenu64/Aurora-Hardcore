@@ -195,7 +195,7 @@
 	var/sizes = params2list(winget(src, "mainwindow.mainvsplit;mapwindow", "size"))
 	var/map_size = splittext(sizes["mapwindow.size"], "x")
 	var/height = text2num(map_size[2])
-	var/desired_width = round(height * aspect_ratio)
+	var/desired_width = round(height * aspect_ratio + 192)
 	if (text2num(map_size[1]) == desired_width)
 		// Nothing to do
 		return
