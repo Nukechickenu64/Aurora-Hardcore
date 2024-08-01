@@ -800,6 +800,7 @@ window "mapwindow"
 		size = 640x480
 		anchor1 = -1,-1
 		anchor2 = -1,-1
+		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		titlebar = false
 		statusbar = false
@@ -807,12 +808,17 @@ window "mapwindow"
 		can-minimize = false
 		can-resize = false
 		is-pane = true
+		outer-size = 654x494
+		outer-pos = 291,0
+		inner-pos = 7,7
+		screen-size = 1440x900
 	elem "rpanel"
 		type = MAP
 		pos = 608,0
 		size = 32x480
 		anchor1 = 95,0
 		anchor2 = 100,100
+		is-visible = false
 		saved-params = "zoom;letterbox;zoom-mode"
 	elem "lpanel"
 		type = MAP
@@ -820,6 +826,7 @@ window "mapwindow"
 		size = 96x480
 		anchor1 = 0,0
 		anchor2 = 15,100
+		is-visible = false
 		saved-params = "zoom;letterbox;zoom-mode"
 	elem "map"
 		type = MAP
@@ -913,20 +920,14 @@ window "rpane"
 		size = 640x480
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		is-pane = true
-		outer-size = 656x538
-		outer-pos = 291,0
-		inner-pos = 8,31
-		screen-size = 1440x900
 	elem "info"
 		type = CHILD
 		pos = 0,0
 		size = 640x456
 		anchor1 = 0,0
 		anchor2 = 100,100
-		background-color = none
 		saved-params = "splitter"
 		left = "statwindow"
 		right = "outputwindow"
@@ -947,7 +948,6 @@ window "rpane"
 		size = 40x20
 		anchor1 = 100,100
 		anchor2 = -1,-1
-		background-color = none
 		saved-params = "is-checked"
 		text = "Chat"
 		command = ".winset \"saybutton.is-checked=true?input.command=\"!say \\\"\" macrobutton.is-checked=false:input.command=\""
@@ -959,7 +959,6 @@ window "rpane"
 		size = 80x20
 		anchor1 = 100,100
 		anchor2 = -1,-1
-		background-color = none
 		saved-params = ""
 		text = "Hotkey Toggle"
 		command = ".winset \"mainwindow.macro!=macro ? mainwindow.macro=macro hotkey_toggle.is-checked=false input.focus=true : mainwindow.macro=hotkeymode hotkey_toggle.is-checked=true mapwindow.map.focus=true\""

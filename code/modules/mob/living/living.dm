@@ -1020,3 +1020,15 @@ default behaviour is:
 
 /mob/living/get_speech_bubble_state_modifier()
 	return isSynthetic() ? "robot" : ..()
+
+/mob/living/LateLogin()
+	. = ..()
+	winset(src, "mapwindow.lpanel", "is-visible=true")
+	winset(src, "mapwindow.rpanel", "is-visible=true")
+	winset(src, "mapwindow.map", "anchor1=15,0;anchor2=95,100;size=512,480;pos=96,0")
+
+/mob/living/Logout()
+	. = ..()
+	winset(src, "mapwindow.lpanel", "is-visible=false")
+	winset(src, "mapwindow.rpanel", "is-visible=false")
+	winset(src, "mapwindow.map", "anchor1=15,0;anchor2=95,100;size=512,480")
