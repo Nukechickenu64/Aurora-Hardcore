@@ -1021,33 +1021,28 @@ default behaviour is:
 /mob/living/get_speech_bubble_state_modifier()
 	return isSynthetic() ? "robot" : ..()
 
+/mob/living
+	var/paneledhud = TRUE
+
 /mob/living/LateLogin()
 	. = ..()
-	var/list/panelsize = splittext(winget(src,"mapwindow.rpanel", "size"),"x")
-	var/panelsizex = text2num(panelsize[1])
-	var/panelsizey = text2num(panelsize[2])
-	var/panelsizexx3 = panelsizex * 3
-	winset(src, "mapwindow.lpanel", "is-visible=true;is-disabled=false")
-	winset(src, "mapwindow.rpanel", "is-visible=true;is-disabled=false")
-	winset(src, "mapwindow.map", "anchor1=15,0;anchor2=95,100")
-	winset(src, "mapwindow.map", "size=[panelsizex * 16],[panelsizey]")
-	winset(src, "mapwindow.map", "pos=[panelsizexx3],0")
+	if(paneledhud == TRUE)
+		winset(src, "mapwindow.rpanel", "view-size=32x480")
+		winset(src, "mapwindow.lpanel", "view-size=96x480")
+		var/list/panelsize = splittext(winget(src,"mapwindow.rpanel", "size"),"x")
+		var/panelsizex = text2num(panelsize[1])
+		var/panelsizey = text2num(panelsize[2])
+		var/panelsizexx3 = panelsizex * 3
+		winset(src, "mapwindow.lpanel", "is-visible=true;is-disabled=false")
+		winset(src, "mapwindow.rpanel", "is-visible=true;is-disabled=false")
+		winset(src, "mapwindow.map", "anchor1=15,0;anchor2=95,100")
+		winset(src, "mapwindow.map", "size=[panelsizex * 16],[panelsizey]")
+		winset(src, "mapwindow.map", "pos=[panelsizexx3],0")
 
 
-
-/*/mob/living/Logout()
+/mob/living/Logout()
 	. = ..()
-	winset(src, "mapwindow.lpanel", "is-visible=false")
-	winset(src, "mapwindow.rpanel", "is-visible=false")
-	winset(src, "mapwindow.map", "anchor1=15,0;anchor2=95,100;size=512,480")
-*/
-/client/verb/hidemap()
-	set category = "OOC"
-	set name = "hidemap"
-	winset(src, "mapwindow.map", "is-visible=false")
-
-/client/verb/showmap()
-	set category = "OOC"
-	set name = "showmap"
-	winset(src, "mapwindow.map", "is-visible=true")
-
+	if(paneledhud == TRUE)
+		winset(src, "mapwindow.lpanel", "is-visible=false")
+		winset(src, "mapwindow.rpanel", "is-visible=false")
+		winset(src, "mapwindow.map", "anchor1=15,0;anchor2=95,100;size=620,480")
