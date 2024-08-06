@@ -800,7 +800,7 @@ window "mapwindow"
 		size = 640x480
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
+		background-color = #080808
 		saved-params = "pos;size;is-minimized;is-maximized"
 		titlebar = false
 		statusbar = false
@@ -808,6 +808,7 @@ window "mapwindow"
 		can-minimize = false
 		can-resize = false
 		is-pane = true
+		transparent-color = #080808
 		outer-size = 654x494
 		outer-pos = 291,0
 		inner-pos = 7,7
@@ -818,22 +819,25 @@ window "mapwindow"
 		size = 32x480
 		anchor1 = 95,0
 		anchor2 = 100,100
+		background-color = #111111
 		is-visible = false
 		saved-params = "zoom;letterbox;zoom-mode"
+		letterbox = false
 	elem "lpanel"
 		type = MAP
 		pos = 0,0
 		size = 96x480
 		anchor1 = 0,0
 		anchor2 = 15,100
+		background-color = #4d4d4d
 		is-visible = false
 		saved-params = "zoom;letterbox;zoom-mode"
 	elem "map"
 		type = MAP
-		pos = 96,0
-		size = 512x480
-		anchor1 = 15,0
-		anchor2 = 95,100
+		pos = 0,0
+		size = 640x480
+		anchor1 = 0,0
+		anchor2 = 100,100
 		font-family = "Arial Rounded MT Bold,Arial Black,Arial,sans-serif"
 		font-size = 7
 		is-default = true

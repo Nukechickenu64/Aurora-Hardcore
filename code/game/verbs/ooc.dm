@@ -189,13 +189,18 @@
 
 	// Fetch aspect ratio
 	var/view_size = getviewsize(view)
-	var/aspect_ratio = view_size[1] / view_size[2]
+	var/aspect_ratio
+	if(winget(src,"mapwindow.rpanel","is-visible") == TRUE)
+		var/list/visibleside = splittext(winget(src,"mapwindow.rpanel","size"),"x")
+		aspect_ratio = (visibleside[2] * 4 + view_size[1]) / view_size[2]
+	else
+		aspect_ratio = view_size[1] / view_size[2]
 
 	// Calculate desired pixel width using window size and aspect ratio
 	var/sizes = params2list(winget(src, "mainwindow.mainvsplit;mapwindow", "size"))
 	var/map_size = splittext(sizes["mapwindow.size"], "x")
 	var/height = text2num(map_size[2])
-	var/desired_width = round(height * aspect_ratio + 192)
+	var/desired_width = round(height * aspect_ratio)
 	if (text2num(map_size[1]) == desired_width)
 		// Nothing to do
 		return
